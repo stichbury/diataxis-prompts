@@ -1,6 +1,8 @@
 
 # Diátaxis documentation prompts
 
+
+
 ## 1. Prompt to scan a set of docs to determine the Diataxis category
 
 ### Prefix prompt to the model
@@ -230,4 +232,131 @@ For the provided codebase (or its description):
 Your goal is to create a strong initial documentation set that the developer can refine.
 
 
+## Prompt to evaluate and reorganize an existing documentation set**
+
+
+You are a documentation engineer reviewing an existing documentation set that may include:
+
+* a live documentation site,
+* a repository of Markdown files with an `mkdocs.yml` defining the information architecture, or
+* a flattened text export such as `llms-full.txt`.
+
+Your task is to assess the current structure, determine how well it aligns to the Diátaxis framework (Tutorials, How-to Guides, Explanation, Reference), recommend how to reorganize the IA with minimal content changes, and then provide a migration guide toward a fully improved, Diátaxis-aligned documentation set.
+
+For the documentation I provide:
+
+
+### **Phase 1 — IA Review and Low-Risk Reorganization (Minimal Content Changes)**
+
+1. **Map the existing documentation.**
+   Extract the current structure from filenames, navigation trees, headings, or content organization. Summarize what exists.
+
+2. **Propose category assignments for each page.**
+   Based on the content and tone, assign the most likely Diátaxis category.
+   You may reassign categories even if the current labels or navigation suggest otherwise.
+
+3. **Recommend an alternative information architecture using existing pages.**
+   *Do not rewrite content yet.*
+   Create a reorganized structure that:
+
+   * groups pages into Diátaxis categories,
+   * removes structural inconsistencies,
+   * improves discoverability, and
+   * uses titles that match the categories.
+     Recommend only renaming, relocating, and re-grouping at this stage.
+
+4. **Provide a revised navigation tree (e.g., updated `mkdocs.yml` structure)**
+   Give a draft IA with:
+
+   * corrected grouping,
+   * improved titles,
+   * Diátaxis-friendly ordering,
+   * new groupings where necessary (“Get started”, “How-to Guides”, “Explanations”, “Reference”).
+
+5. **Explain the reasoning behind the reorganization.**
+   Identify structural issues such as:
+
+   * tutorials mixed with explanations,
+   * how-to guides containing conceptual digressions,
+   * reference data scattered across multiple sections,
+   * explanatory essays buried inside tutorials,
+   * inconsistent title conventions.
+
+6. **Deliver a clean, minimal-change reorganization proposal.**
+   This proposal should be realistic for immediate adoption without requiring major rewriting.
+
+
+### **Phase 2 — Full Content Analysis and Improvement Plan**
+
+After the low-risk reorganization, perform a deeper review of the entire documentation set.
+
+7. **Analyze every page in detail.**
+   For each document:
+
+   * Confirm or revise its Diátaxis category.
+   * Score the alignment on a scale of 1–3 (3 = strong match).
+   * Provide up to three improvement recommendations if score < 3.
+   * Assess the title and propose a replacement if it does not match the category.
+
+8. **Identify misplaced content types.**
+   Flag content where:
+
+   * explanations appear in tutorials or how-to guides,
+   * step-by-step instructions appear in explanations,
+   * opinionated or narrative tone appears in reference material,
+   * conceptual material appears where task-driven steps should be.
+
+9. **Recommend rewrites or restructuring where necessary.**
+   For example:
+
+   * suggest splitting large pages into Tutorials + How-to Guides,
+   * converting conceptual digressions into Explanation pages,
+   * merging duplicate or overlapping pages,
+   * rewriting titles for clarity and category alignment,
+   * turning weak tutorials into strong step-by-step sequences.
+
+10. **Produce a complete target-state IA**
+    A future-state information architecture that includes:
+
+    * all final pages organized by Diátaxis category,
+    * new or missing pages that should be added,
+    * which existing pages should be replaced, merged, or retired,
+    * a clear vision for the documentation system as a whole.
+
+
+### **Phase 3 — Prioritized Migration Plan**
+
+11. **Provide a step-by-step migration plan from current state → minimal reorg → final state.**
+    This should include:
+
+    * a priority ranking (High, Medium, Low)
+    * where to start (e.g., tutorials, reference, major structural problems)
+    * tasks that yield the biggest improvement fastest
+    * incremental steps that avoid breaking the docs infrastructure
+    * recommended sequencing (e.g., reorganize IA first, then rewrite tutorials, then build reference)
+
+12. **Highlight dependencies and blockers.**
+    Such as:
+
+    * missing conceptual material needed before writing explanations,
+    * lack of API documentation,
+    * unclear feature scope needing clarification from subject-matter experts.
+
+13. **Produce a clear “next actions” list** for a documentation engineer to begin migration immediately.
+
+---
+
+### **Your output format**
+
+Your response should include:
+
+* **Current state summary**
+* **Proposed minimal-change IA reorganization**
+* **Revised navigation tree**
+* **Full content analysis by page**
+* **Target-state IA**
+* **Prioritized migration plan**
+* **Actionable next steps**
+
+Your goal is to give the documentation engineer a complete, actionable view of how to reorganize, retitle, and eventually improve their documentation system so that it is fully aligned with the Diátaxis framework.
 
