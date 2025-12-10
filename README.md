@@ -232,7 +232,7 @@ For the provided codebase (or its description):
 Your goal is to create a strong initial documentation set that the developer can refine.
 
 
-## Prompt to evaluate and reorganize an existing documentation set**
+## 4. Prompt to evaluate and reorganize an existing documentation set
 
 
 You are a documentation engineer reviewing an existing documentation set that may include:
